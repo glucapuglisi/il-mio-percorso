@@ -1,7 +1,6 @@
 {
   "name": "Il mio percorso",
   "short_name": "Percorso",
-  "description": "Percorso personale guidato di 12 settimane",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
