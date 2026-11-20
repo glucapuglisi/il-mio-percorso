@@ -1,0 +1,22 @@
+{
+  "name": "Il mio percorso",
+  "short_name": "Percorso",
+  "description": "Percorso personale guidato di 12 settimane",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101a17",
+  "theme_color": "#14251f",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

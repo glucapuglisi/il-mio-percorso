@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14251f"><link rel="manifest" href="manifest.json">
+<title>Il mio percorso</title>
+<style>
+:root{color-scheme:dark;--bg:#101a17;--panel:#1b2924;--panel2:#24352e;--ink:#f3f5ef;--muted:#aebbb2;--accent:#c4e7a5;--line:#34463d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,sans-serif}
+main{max-width:620px;margin:auto;padding:env(safe-area-inset-top) 18px calc(28px + env(safe-area-inset-bottom))}
+header{padding:28px 2px 18px;display:flex;justify-content:space-between;align-items:center}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:29px;line-height:1.08;margin:7px 0 0;letter-spacing:-.04em}h2{font-size:19px;margin:0 0 12px}
+p{margin:6px 0;color:var(--muted)}.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:19px;margin:12px 0}
+.today{background:linear-gradient(145deg,#263c30,#1b2924);padding:22px}.tag{display:inline-block;color:#172319;background:var(--accent);font-size:12px;font-weight:800;padding:5px 10px;border-radius:30px}
+.big{font-size:24px;font-weight:800;margin:13px 0 4px}button{border:0;border-radius:14px;padding:14px 17px;font:inherit;font-weight:750;cursor:pointer}
+.primary{background:var(--accent);color:#172319;width:100%;margin-top:17px}.secondary{background:var(--panel2);color:var(--ink);width:100%;border:1px solid var(--line)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.bar{height:9px;background:#34463d;border-radius:9px;overflow:hidden;margin:13px 0 6px}
+.bar span{display:block;height:100%;background:var(--accent);width:0%;border-radius:9px}.muted{color:var(--muted);font-size:13px}
+.phase{padding:12px 0;border-top:1px solid var(--line)}.phase:first-of-type{border-top:0}.phase strong{display:block}
+.hidden{display:none!important}.notice{font-size:12px;color:var(--muted);border-left:3px solid var(--accent);padding-left:11px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:20px 4px}
+</style></head><body><main>
+<header><div><div class="eyebrow">Il tuo percorso</div><h1>Oggi si fa un passo.</h1></div><div style="font-size:28px">🌱</div></header>
+<section id="home">
+<div class="card today"><span class="tag">SETTIMANA 1 · GIORNO 1</span><div class="big">Il tuo percorso comincia qui</div>
+<p>La prima sessione sarà guidata passo dopo passo.</p><button class="primary" id="start">INIZIA</button></div>
+<div class="card"><div class="row"><h2>Il percorso di 12 settimane</h2><strong id="pct">0%</strong></div><div class="bar"><span id="bar"></span></div><p class="muted" id="count">Nessuna sessione completata</p>
+<div class="phase"><strong>Settimane 1–2 · Partenza</strong><span class="muted">Imparare i movimenti e trovare il ritmo</span></div>
+<div class="phase"><strong>Settimane 3–4 · Costruzione</strong><span class="muted">Consolidare tecnica e regolarità</span></div>
+<div class="phase"><strong>Settimane 5–8 · Progressione</strong><span class="muted">Progredire gradualmente</span></div>
+<div class="phase"><strong>Settimane 9–12 · Consolidamento</strong><span class="muted">Rendere solidi i risultati</span></div></div>
+<div class="card"><div class="row"><h2>Routine del mattino</h2><span class="muted">5 minuti</span></div><p>La tua breve routine posturale quotidiana.</p><button class="secondary" id="routine">APRI ROUTINE</button><p class="muted" id="routineStatus"></p></div>
+<p class="notice">Questa è la struttura iniziale. Prima di usare gli allenamenti come guida effettiva, inseriremo la scheda approvata e le dimostrazioni degli esercizi.</p>
+</section>
+<section id="workout" class="hidden"><div class="row"><span class="eyebrow">Sessione guidata</span><button class="secondary" style="width:auto;padding:8px 12px" id="exit">Esci</button></div>
+<div class="card"><h2>La tua sessione sarà qui</h2><p>Inseriremo gli esercizi esatti del tuo programma, uno alla volta, con dimostrazione, serie, ripetizioni e recupero automatico.</p>
+<p class="notice">Questa è solo un'anteprima: non contiene ancora la scheda personalizzata. Non registrarla come allenamento.</p></div></section>
+<section id="routinePage" class="hidden"><div class="row"><span class="eyebrow">Routine quotidiana</span><button class="secondary" style="width:auto;padding:8px 12px" id="back">Indietro</button></div>
+<div class="card"><h2>5 minuti per iniziare</h2><p>Le tre attività concordate:</p><ol style="line-height:2"><li>Retrazioni del mento</li><li>Allungamento pettorale delicato alla porta</li><li>Estensione toracica da seduto sulla sedia</li></ol>
+<button class="primary" id="done">SEGNA COME COMPLETATA</button><p class="muted" id="message"></p></div></section>
+<footer>I dati di questa versione restano sul dispositivo. Non sostituisce indicazioni mediche o fisioterapiche.</footer>
+</main><script>
+const KEY='ilMioPercorso_v1';let s={routineDate:'',...JSON.parse(localStorage.getItem(KEY)||'{}')};
+const today=()=>new Date().toISOString().slice(0,10);
+function save(){localStorage.setItem(KEY,JSON.stringify(s));render()}
+function render(){document.getElementById('routineStatus').textContent=s.routineDate===today()?'Routine completata oggi ✓':'Non ancora completata oggi'}
+function show(id){['home','workout','routinePage'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id))}
+document.getElementById('start').onclick=()=>show('workout');document.getElementById('exit').onclick=()=>show('home');
+document.getElementById('routine').onclick=()=>show('routinePage');document.getElementById('back').onclick=()=>show('home');
+document.getElementById('done').onclick=()=>{s.routineDate=today();document.getElementById('message').textContent='Routine registrata su questo dispositivo.';save()};
+render();
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script></body></html>
