@@ -1,14 +1,14 @@
-AGGIORNAMENTO ILLUSTRAZIONI - IL MIO PERCORSO
+AGGIORNAMENTO V6 - LINK VIDEO PER OGNI ESERCIZIO
 
-Carica TUTTI e 5 i file di questa cartella nella cartella principale (root) del repository GitHub, sostituendo i file omonimi:
+Carica TUTTI i file di questa cartella nella cartella principale (root) del repository GitHub, sostituendo i file omonimi:
 - index.html
 - sw.js
 - manifest.json
 - icon-192.png
 - icon-512.png
 
-Su GitHub: repository > Add file > Upload files > trascina i 5 file > Commit changes.
+Su GitHub: repository > Add file > Upload files > trascina i 5 file sopra > Commit changes.
 
-Dopo la pubblicazione, apri il sito e aggiorna la pagina. Se sul telefono continua a comparire la vecchia schermata, chiudi la PWA completamente e riaprila; il nuovo service worker usa una cache nuova e rimuove quella precedente.
+Dopo il commit, attendi che Pages build and deployment sia verde. Poi chiudi completamente la PWA e riaprila. La nuova cache si chiama il-mio-percorso-v6-video-esercizi.
 
-Questa versione contiene le illustrazioni SVG integrate nella scheda dei 3 movimenti della routine quotidiana. Le istruzioni testuali restano presenti.
+In ogni scheda di esercizio e in ciascuno dei tre movimenti della routine trovi ora un collegamento a una ricerca YouTube mirata. Si apre la ricerca, non un video singolo non verificato: scegli una dimostrazione che corrisponda alla variante descritta nell’app. Per gli esercizi della spalla sono presenti avvertenze specifiche.
