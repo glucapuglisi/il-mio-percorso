@@ -1,0 +1,14 @@
+AGGIORNAMENTO ILLUSTRAZIONI - IL MIO PERCORSO
+
+Carica TUTTI e 5 i file di questa cartella nella cartella principale (root) del repository GitHub, sostituendo i file omonimi:
+- index.html
+- sw.js
+- manifest.json
+- icon-192.png
+- icon-512.png
+
+Su GitHub: repository > Add file > Upload files > trascina i 5 file > Commit changes.
+
+Dopo la pubblicazione, apri il sito e aggiorna la pagina. Se sul telefono continua a comparire la vecchia schermata, chiudi la PWA completamente e riaprila; il nuovo service worker usa una cache nuova e rimuove quella precedente.
+
+Questa versione contiene le illustrazioni SVG integrate nella scheda dei 3 movimenti della routine quotidiana. Le istruzioni testuali restano presenti.
